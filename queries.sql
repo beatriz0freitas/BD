@@ -14,6 +14,7 @@ ORDER BY idStand, marca;
 -- =============================================
 -- RM04
 -- =============================================
+DROP PROCEDURE IF EXISTS VerificaClienteAptoAluguer;
 DELIMITER $$
 
 CREATE PROCEDURE VerificaClienteAptoAluguer (
@@ -39,6 +40,7 @@ CALL VerificaClienteAptoAluguer(1, '2035-08-01');
 -- =============================================
 -- RM10
 -- =============================================
+DROP PROCEDURE IF EXISTS FuncionariosComMaisAlugueresMes;
 DELIMITER $$
 
 CREATE PROCEDURE FuncionariosComMaisAlugueresMes (
@@ -47,25 +49,28 @@ CREATE PROCEDURE FuncionariosComMaisAlugueresMes (
 )
 BEGIN
     SELECT 
-        F.idFuncionario,
-        F.nomeCompleto
+		F.idFuncionario, 
+        F.nomeCompleto, 
+        COUNT(A.idAluguer) AS totalAlugueres
     FROM AgroAuto.Funcionario F
     JOIN AgroAuto.Aluguer A ON F.idFuncionario = A.idFuncionario
     WHERE A.dataInicio BETWEEN pDataInicioMes AND pDataFimMes
     GROUP BY F.idFuncionario, F.nomeCompleto
-    HAVING COUNT(*) = (
-        SELECT MAX(totalAlugueres)
+    HAVING totalAlugueres = (
+        SELECT 
+			MAX(totalAlugueres)
         FROM (
-            SELECT COUNT(*) AS totalAlugueres
+            SELECT 
+				idFuncionario, 
+                COUNT(idAluguer) AS totalAlugueres
             FROM AgroAuto.Aluguer
             WHERE dataInicio BETWEEN pDataInicioMes AND pDataFimMes
             GROUP BY idFuncionario
-        ) AS sub
+        ) AS subquery
     );
 END $$
 
 DELIMITER ;
-
 
 CALL FuncionariosComMaisAlugueresMes('2025-05-01', '2025-05-31');
 

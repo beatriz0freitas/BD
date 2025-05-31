@@ -3,16 +3,9 @@
 -- Caso de Estudo: AgroAuto
 -- =============================================
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
--- -----------------------------------------------------
--- Schema AgroAuto
--- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `AgroAuto` ;
 
-CREATE SCHEMA IF NOT EXISTS `AgroAuto` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `AgroAuto`;
 USE `AgroAuto` ;
 
 -- -----------------------------------------------------
@@ -37,9 +30,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Cliente` (
   `dataValidadeCartao` DATE NULL,
   `numeroCartao` VARCHAR(19) NULL,
   `CVV` VARCHAR(3) NULL,
-  PRIMARY KEY (`idCliente`))
-ENGINE = InnoDB;
-
+  PRIMARY KEY (`idCliente`));
 
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Stand`
@@ -53,9 +44,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Stand` (
   `codigoPostal` VARCHAR(75) NULL,
   `numeroTelefone` VARCHAR(9) NOT NULL,
   `email` VARCHAR(75) NOT NULL,
-  PRIMARY KEY (`idStand`))
-ENGINE = InnoDB;
-
+  PRIMARY KEY (`idStand`));
 
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Trator`
@@ -70,13 +59,9 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Trator` (
   `estado` ENUM('Livre', 'Alugado') NOT NULL,
   `idStand` INT NOT NULL,
   PRIMARY KEY (`idTrator`),
-  INDEX `fkTratorStand` (`idStand` ASC) VISIBLE,
-  CONSTRAINT `fkTratorStand`
-    FOREIGN KEY (`idStand`)
-    REFERENCES `AgroAuto`.`Stand` (`idStand`)
+    FOREIGN KEY (`idStand`) REFERENCES `AgroAuto`.`Stand` (`idStand`)
     ON DELETE RESTRICT
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
@@ -90,13 +75,9 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Funcionario` (
   `numeroTelemovel` VARCHAR(9) NOT NULL,
   `idStand` INT NOT NULL,
   PRIMARY KEY (`idFuncionario`),
-  INDEX `fkFuncionarioStand` (`idStand` ASC) VISIBLE,
-  CONSTRAINT `fkFuncionarioStand`
-    FOREIGN KEY (`idStand`)
-    REFERENCES `AgroAuto`.`Stand` (`idStand`)
+    FOREIGN KEY (`idStand`) REFERENCES `AgroAuto`.`Stand` (`idStand`)
     ON DELETE RESTRICT
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Aluguer`
@@ -115,27 +96,14 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Aluguer` (
   `idTrator` INT NOT NULL,
   `idFuncionario` INT NOT NULL,
   PRIMARY KEY (`idAluguer`),
-  INDEX `fkAluguerCliente` (`idCliente` ASC) VISIBLE,
-  INDEX `fkAluguerTrator` (`idTrator` ASC) VISIBLE,
-  INDEX `fkAluguerFuncionario` (`idFuncionario` ASC) VISIBLE,
-  CONSTRAINT `fkAluguerCliente`
-    FOREIGN KEY (`idCliente`)
-    REFERENCES `AgroAuto`.`Cliente` (`idCliente`)
+    FOREIGN KEY (`idCliente`) REFERENCES `AgroAuto`.`Cliente` (`idCliente`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkAluguerTrator`
-    FOREIGN KEY (`idTrator`)
-    REFERENCES `AgroAuto`.`Trator` (`idTrator`)
+    FOREIGN KEY (`idTrator`) REFERENCES `AgroAuto`.`Trator` (`idTrator`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkAluguerFuncionario`
-    FOREIGN KEY (`idFuncionario`)
-    REFERENCES `AgroAuto`.`Funcionario` (`idFuncionario`)
+    FOREIGN KEY (`idFuncionario`) REFERENCES `AgroAuto`.`Funcionario` (`idFuncionario`)
     ON DELETE RESTRICT
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
--- Desativa restrições temporariamente
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

@@ -21,9 +21,6 @@ END$$
 DELIMITER ;
 
 
-
-
-
 -- Atualizar trator como "Livre" quando o aluguer termina
 -- condição adicional (OLD <> NEW) evita atualizações redundantes se os dados não mudarem.
 DROP TRIGGER IF EXISTS setTratorLivre;
