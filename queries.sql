@@ -73,6 +73,7 @@ CALL FuncionariosComMaisAlugueresMes('2025-05-01', '2025-05-31');
 -- =============================================
 -- RM11
 -- =============================================
+DROP PROCEDURE IF EXISTS TotalAlugueresPorTrimestre;
 DELIMITER $$
 
 CREATE PROCEDURE TotalAlugueresPorTrimestre(
@@ -87,7 +88,7 @@ END $$
 
 DELIMITER ;
 
-CALL TotalAlugueresPorTrimestre('2024-04-01', '2024-06-30');
+CALL TotalAlugueresPorTrimestre('2025-04-01', '2025-06-30');
 
 
 -- =============================================

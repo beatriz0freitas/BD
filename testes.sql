@@ -48,3 +48,30 @@ SELECT idTrator, estado FROM Trator WHERE idTrator = 1;
 UPDATE Aluguer 
 SET estadoPagamento = 'Concluido', dataTermino = DATE_SUB(CURDATE(), INTERVAL 1 DAY)
 WHERE idTrator = 1;
+
+INSERT INTO AgroAuto.Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
+VALUES
+('2025-01-10', '2025-01-20', 500.00, 'CartaoCredito', 'Concluido', 'APronto', 1, 3, 2),
+('2025-02-05', '2025-02-15', 750.00, 'Dinheiro', 'Concluido', 'EmPrestacoes', 2, 5, 3),
+('2025-03-12', '2025-03-22', 900.00, 'CartaoCredito', 'EmAtraso', 'APronto', 3, 1, 1);
+
+INSERT INTO AgroAuto.Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
+VALUES
+('2025-04-02', '2025-04-12', 600.00, 'Dinheiro', 'Concluido', 'APronto', 4, 2, 1),
+('2025-05-14', '2025-05-24', 1200.00, 'CartaoCredito', 'Concluido', 'EmPrestacoes', 5, 4, 2),
+('2025-06-18', '2025-06-28', 1500.00, 'Dinheiro', 'EmAtraso', 'APronto', 6, 6, 3);
+
+INSERT INTO AgroAuto.Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
+VALUES
+('2025-07-05', '2025-07-15', 850.00, 'CartaoCredito', 'Concluido', 'APronto', 2, 3, 2),
+('2025-08-10', '2025-08-20', 950.00, 'Dinheiro', 'EmAtraso', 'EmPrestacoes', 4, 5, 3),
+('2025-09-22', '2025-09-30', 1100.00, 'CartaoCredito', 'Concluido', 'APronto', 1, 1, 1);
+
+INSERT INTO AgroAuto.Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
+VALUES
+('2025-10-08', '2025-10-18', 680.00, 'Dinheiro', 'Concluido', 'APronto', 3, 4, 1),
+('2025-11-12', '2025-11-22', 1020.00, 'CartaoCredito', 'EmAtraso', 'EmPrestacoes', 6, 2, 2),
+('2025-12-25', '2026-01-05', 1400.00, 'Dinheiro', 'Concluido', 'APronto', 5, 6, 3);
+
+CALL TotalAlugueresPorTrimestre('2025-07-01', '2025-09-30'); -- Teste para o terceiro trimestre
+CALL TotalAlugueresPorTrimestre('2025-10-01', '2025-12-31'); -- Teste para o quarto trimestre
