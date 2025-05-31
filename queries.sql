@@ -46,21 +46,22 @@ CREATE PROCEDURE FuncionariosComMaisAlugueresMes (
     IN pDataFimMes DATE
 )
 BEGIN
-    WITH Totais AS (
-        SELECT 
-            A.idFuncionario,
-            COUNT(*) AS totalAlugueres
-        FROM AgroAuto.Aluguer A
-        WHERE 
-            A.dataInicio BETWEEN pDataInicioMes AND pDataFimMes
-        GROUP BY A.idFuncionario
-    ),
-    Maximo AS (
-        SELECT MAX(totalAlugueres) AS maxAlugueres FROM Totais
-    )
-    SELECT T.idFuncionario
-    FROM Totais T
-    JOIN Maximo M ON T.totalAlugueres = M.maxAlugueres;
+    SELECT 
+        F.idFuncionario,
+        F.nomeCompleto
+    FROM AgroAuto.Funcionario F
+    JOIN AgroAuto.Aluguer A ON F.idFuncionario = A.idFuncionario
+    WHERE A.dataInicio BETWEEN pDataInicioMes AND pDataFimMes
+    GROUP BY F.idFuncionario, F.nomeCompleto
+    HAVING COUNT(*) = (
+        SELECT MAX(totalAlugueres)
+        FROM (
+            SELECT COUNT(*) AS totalAlugueres
+            FROM AgroAuto.Aluguer
+            WHERE dataInicio BETWEEN pDataInicioMes AND pDataFimMes
+            GROUP BY idFuncionario
+        ) AS sub
+    );
 END $$
 
 DELIMITER ;
