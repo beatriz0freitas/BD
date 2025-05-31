@@ -11,9 +11,7 @@ CREATE TRIGGER setTratorAlugado
 AFTER INSERT ON Aluguer
 FOR EACH ROW
 BEGIN
-    -- Atualiza o trator como 'Alugado' se hoje for dentro do período ou o pagamento ainda estiver pendente
-    IF (CURRENT_DATE BETWEEN NEW.dataInicio AND NEW.dataTermino)
-       OR (NEW.estadoPagamento = 'EmAtraso') THEN
+    IF (SELECT estado FROM Trator WHERE idTrator = NEW.idTrator) <> 'Alugado' THEN
         UPDATE Trator
         SET estado = 'Alugado'
         WHERE idTrator = NEW.idTrator;
@@ -25,13 +23,14 @@ DELIMITER ;
 
 
 
+
 -- Atualizar trator como "Livre" quando o aluguer termina
 -- condição adicional (OLD <> NEW) evita atualizações redundantes se os dados não mudarem.
 DROP TRIGGER IF EXISTS setTratorLivre;
 DELIMITER $$
 
 CREATE TRIGGER setTratorLivre
-AFTER UPDATE ON Aluguer
+BEFORE UPDATE ON Aluguer
 FOR EACH ROW
 BEGIN
     -- Apenas atualiza para 'Livre' se já passou o prazo E o pagamento está concluído
@@ -44,9 +43,3 @@ END$$
 
 DELIMITER ;
 
-
-
-
-
-
-SHOW TRIGGERS FROM AgroAuto;

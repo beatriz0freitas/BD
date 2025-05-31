@@ -31,3 +31,20 @@ WHERE idTrator = 1;
 
 SELECT *
 FROM Trator;
+
+SHOW TRIGGERS;
+
+SHOW TRIGGERS FROM AgroAuto LIKE '%setTratorAlugado%';
+
+SELECT * FROM information_schema.TRIGGERS WHERE TRIGGER_NAME = 'setTratorAlugado';
+
+SHOW ERRORS;
+
+SELECT USER();
+SHOW GRANTS FOR CURRENT_USER;
+
+SELECT idTrator, estado FROM Trator WHERE idTrator = 1;
+
+UPDATE Aluguer 
+SET estadoPagamento = 'Concluido', dataTermino = DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+WHERE idTrator = 1;
