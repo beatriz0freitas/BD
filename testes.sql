@@ -1,3 +1,26 @@
+-- =============================================
+-- Comandos para testes
+-- Caso de Estudo: AgroAuto
+-- =============================================
+
+-- teste Permissoes
+SHOW GRANTS FOR 'admin'@'localhost';
+SHOW GRANTS FOR 'dcosta'@'localhost';
+SHOW GRANTS FOR 'fteixeira'@'localhost';
+SHOW GRANTS FOR 'fvieira'@'localhost';
+
+SELECT USER FROM mysql.user;
+SELECT DEFAULT_ROLE FROM mysql.user;
+
+SHOW GRANTS FOR CURRENT_USER();
+
+SELECT * FROM information_schema.role_table_grants WHERE GRANTEE = 'funcionario';
+
+SET ROLE 'funcionario';
+SELECT CURRENT_ROLE();
+
+
+-- teste estado a ser atualizado corretamente
 SELECT 
     t.idTrator,
     t.modelo,
@@ -21,9 +44,9 @@ SELECT
 FROM Trator t
 ORDER BY t.idTrator;
 
+-- teste trigger estado
 INSERT INTO Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
 VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), 500, 'Dinheiro', 'EmAtraso', 'APronto', 2, 1, 3);
-
 
 SELECT *
 FROM Aluguer
@@ -33,15 +56,7 @@ SELECT *
 FROM Trator;
 
 SHOW TRIGGERS;
-
-SHOW TRIGGERS FROM AgroAuto LIKE '%setTratorAlugado%';
-
 SELECT * FROM information_schema.TRIGGERS WHERE TRIGGER_NAME = 'setTratorAlugado';
-
-SHOW ERRORS;
-
-SELECT USER();
-SHOW GRANTS FOR CURRENT_USER;
 
 SELECT idTrator, estado FROM Trator WHERE idTrator = 1;
 
@@ -49,6 +64,8 @@ UPDATE Aluguer
 SET estadoPagamento = 'Concluido', dataTermino = DATE_SUB(CURDATE(), INTERVAL 1 DAY)
 WHERE idTrator = 1;
 
+
+-- mais entradas para query trimestre
 INSERT INTO AgroAuto.Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
 VALUES
 ('2025-01-10', '2025-01-20', 500.00, 'CartaoCredito', 'Concluido', 'APronto', 1, 3, 2),
@@ -75,3 +92,18 @@ VALUES
 
 CALL TotalAlugueresPorTrimestre('2025-07-01', '2025-09-30'); -- Teste para o terceiro trimestre
 CALL TotalAlugueresPorTrimestre('2025-10-01', '2025-12-31'); -- Teste para o quarto trimestre
+
+
+-- testar procedimento
+CALL registarNovoAluguer('2025-06-01', '2025-06-07', 'CartaoCredito', 'APronto', 1, 2, 3);
+SELECT * FROM Aluguer WHERE idCliente = 1 ORDER BY idAluguer DESC;
+
+CALL registarNovoAluguer(
+    '2025-06-10', '2025-06-15',  
+    'CartaoCredito', 'APronto',  
+    2, 2, 4  -- `idTrator` já ocupado - nao deve criar
+);
+SELECT * FROM Aluguer WHERE idCliente = 2 ORDER BY idAluguer DESC;
+
+CALL registarNovoAluguer('2025-06-16', '2025-06-22', 'Dinheiro', 'EmPrestacoes', 3, 5, 1 );
+SELECT * FROM Aluguer WHERE idCliente = 3 ORDER BY idAluguer DESC;
