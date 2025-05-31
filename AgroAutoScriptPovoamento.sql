@@ -29,19 +29,19 @@ VALUES
 
 
 -- Povoamento da tabela "Stand"
-INSERT INTO `AgroAuto`.`Stand` (idStand, rua, localidade, codigoPostal, numeroTelefone, email)
+INSERT INTO `AgroAuto`.`Stand` (rua, localidade, codigoPostal, numeroTelefone, email)
 VALUES
-(1, 'Rua São Martinho da Bouça', 'Olivença', '4700-001', '253123123', 'olivença@agroauto.pt'),
-(2, 'Rua Da Malha',              'Lamego',   '8000-002', '289456456', 'lamego@agroauto.pt'),
-(3, 'Rua Do Porto Seguro',       'Sagres',   '7500-002', '247567456', 'sagres@agroauto.pt');
+('Rua São Martinho da Bouça', 'Olivença', '4700-001', '253123123', 'olivença@agroauto.pt'),
+('Rua Da Malha',              'Lamego',   '8000-002', '289456456', 'lamego@agroauto.pt'),
+('Rua Do Porto Seguro',       'Sagres',   '7500-002', '247567456', 'sagres@agroauto.pt');
 
 
 -- Povoamento da tabela "Funcionário" 
-INSERT INTO `AgroAuto`.`Funcionario` (idFuncionario, nomeCompleto, numeroTelemovel, idStand)
+INSERT INTO `AgroAuto`.`Funcionario` (nomeCompleto, numeroTelemovel, idStand)
 VALUES
-(1, 'Diogo Costa',     '910000001', 1),
-(2, 'Fátima Teixeira', '910000002', 2),
-(3, 'Fábio Vieira',    '910000003', 3);
+('Diogo Costa',     '910000001', 1),
+('Fátima Teixeira', '910000002', 2),
+('Fábio Vieira',    '910000003', 3);
 
 -- Povoamento da tabela "Trator"
 INSERT INTO `AgroAuto`.`Trator` (modelo, marca, precoDiario, estado, idStand)

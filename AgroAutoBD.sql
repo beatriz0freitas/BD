@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Cliente` (
 DROP TABLE IF EXISTS `AgroAuto`.`Stand` ;
 
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Stand` (
-  `idStand` INT NOT NULL ,
+  `idStand` INT NOT NULL AUTO_INCREMENT,
   `rua` VARCHAR(100) NULL,
   `localidade` VARCHAR(75) NULL,
   `codigoPostal` VARCHAR(75) NULL,
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Trator` (
 DROP TABLE IF EXISTS `AgroAuto`.`Funcionario` ;
 
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Funcionario` (
-  `idFuncionario` INT NOT NULL,
+  `idFuncionario` INT NOT NULL AUTO_INCREMENT,
   `nomeCompleto` VARCHAR(75) NOT NULL,
   `numeroTelemovel` VARCHAR(9) NOT NULL,
   `idStand` INT NOT NULL,
