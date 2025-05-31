@@ -6,7 +6,7 @@ import json
 
 def conectar_mysql():
     return mysql.connector.connect(
-        host="localhost",       # ou "127.0.0.1"
+        host="localhost",
         port=3306,  
         user="root",
         password="Benfica4",
@@ -23,11 +23,11 @@ def migrar_tratores():
         reader = csv.reader(f)
         next(reader)  # ignorar cabeçalho
         for row in reader:
-            idTrator,modelo, marca, preco_diario, estado, id_stand = row
+            modelo, marca, preco_diario, estado, id_stand = row
             cursor.execute("""
-                INSERT INTO Trator (idTrator,modelo, marca, precoDiario, estado, idStand)
-                VALUES (%s, %s, %s, %s, %s,%s)
-            """, (idTrator,modelo, marca, float(preco_diario), estado, int(id_stand)))
+                INSERT INTO Trator (modelo, marca, precoDiario, estado, idStand)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (modelo, marca, float(preco_diario), estado, int(id_stand)))
 
     mysql_conn.commit()
     mysql_conn.close()
@@ -68,7 +68,7 @@ def migrar_alugueres():
 if __name__ == "__main__":
     try:
         migrar_tratores()
-        #migrar_alugueres()
+        migrar_alugueres()
         print("Migração concluída com sucesso.")
     except Exception as e:
         print("Erro durante a migração:", e)

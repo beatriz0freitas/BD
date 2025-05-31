@@ -44,14 +44,14 @@ VALUES
 (3, 'Fábio Vieira',    '910000003', 3);
 
 -- Povoamento da tabela "Trator"
-INSERT INTO `AgroAuto`.`Trator` (idTrator, modelo, marca, precoDiario, estado, idStand)
+INSERT INTO `AgroAuto`.`Trator` (modelo, marca, precoDiario, estado, idStand)
 VALUES
-(1, 'T8.410',     'New Holland',     250.00, 'Livre', 1),
-(2, '6145R',      'John Deere',      300.00, 'Alugado', 2),
-(3, 'MF 8S.265',  'Massey Ferguson', 280.00, 'Alugado', 3),
-(4, 'Arion 660',  'CLAAS',           260.00, 'Livre', 1),
-(5, 'Maxxum 150', 'Case IH',         270.00, 'Alugado', 2),
-(6, 'T7.290',     'New Holland',     310.00, 'Alugado', 3);
+('T8.410',     'New Holland',     250.00, 'Livre', 1),
+('6145R',      'John Deere',      300.00, 'Alugado', 2),
+('MF 8S.265',  'Massey Ferguson', 280.00, 'Alugado', 3),
+('Arion 660',  'CLAAS',           260.00, 'Livre', 1),
+('Maxxum 150', 'Case IH',         270.00, 'Alugado', 2),
+('T7.290',     'New Holland',     310.00, 'Alugado', 3);
 
 -- Povoamento da tabela "Aluguer"
 INSERT INTO `AgroAuto`.`Aluguer`

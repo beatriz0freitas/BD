@@ -63,7 +63,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `AgroAuto`.`Trator` ;
 
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Trator` (
-  `idTrator` INT NOT NULL,
+  `idTrator` INT NOT NULL AUTO_INCREMENT,
   `modelo` VARCHAR(75) NOT NULL,
   `marca` VARCHAR(75) NOT NULL,
   `precoDiario` DECIMAL(8,2) NOT NULL,
