@@ -1,25 +1,25 @@
-modelo,marca,preco_diario,estado,id_stand
-T-800,John Deere,120.5,Livre,1
-TX-300,New Holland,98.0,Livre,2
-MaxTractor,Massey Ferguson,105.75,Alugado,3
-T8.410,New Holland,250.00,Livre,1
-6145R,John Deere,300.00,Livre,2
-MF 8S.265,Massey Ferguson,280.00,Alugado,3
-Arion 660,CLAAS,260.00,Livre,1
-Maxxum 150,Case IH,270.00,Livre,2
-T7.290,New Holland,310.00,Alugado,3
-Valtra T235,Valtra,265.00,Livre,1
-Case Magnum 340,Case IH,290.00,Alugado,2
-Deutz-Fahr 7250,Deutz-Fahr,275.00,Livre,3
-John Deere 8R,John Deere,315.00,Livre,1
-New Holland T9.565,New Holland,330.00,Alugado,2
-Kubota M7-172,Kubota,240.00,Livre,3
-McCormick X7.690,McCormick,255.00,Livre,1
-Lamborghini Mach VRT,Lamborghini,295.00,Livre,2
-Steyr 6300 Terrus CVT,Steyr,305.00,Alugado,3
-Fendt 1050 Vario,Fendt,325.00,Livre,1
-JCB Fastrac 8330,JCB,310.00,Livre,2
-Valtra N174,Valtra,260.00,Alugado,3
-John Deere 6155M,John Deere,275.00,Livre,1
-CLAAS Axion 960 Terra Trac,CLAAS,345.00,Livre,2
-Zetor Forterra HD,Zetor,230.00,Livre,3
+idTrator,modelo,marca,precoDiario,estado,idStand
+7,T-800,John Deere,120.5,Livre,1
+8,TX-300,New Holland,98.0,Livre,2
+9,MaxTractor,Massey Ferguson,105.75,Alugado,3
+10,T8.410,New Holland,250.00,Livre,1
+11,6145R,John Deere,300.00,Livre,2
+12,MF 8S.265,Massey Ferguson,280.00,Alugado,3
+13,Arion 660,CLAAS,260.00,Livre,1
+14,Maxxum 150,Case IH,270.00,Livre,2
+15,T7.290,New Holland,310.00,Alugado,3
+16,Valtra T235,Valtra,265.00,Livre,1
+17,Case Magnum 340,Case IH,290.00,Alugado,2
+18,Deutz-Fahr 7250,Deutz-Fahr,275.00,Livre,3
+19,John Deere 8R,John Deere,315.00,Livre,1
+20,New Holland T9.565,New Holland,330.00,Alugado,2
+21,Kubota M7-172,Kubota,240.00,Livre,3
+22,McCormick X7.690,McCormick,255.00,Livre,1
+23,Lamborghini Mach VRT,Lamborghini,295.00,Livre,2
+24,Steyr 6300 Terrus CVT,Steyr,305.00,Alugado,3
+25,Fendt 1050 Vario,Fendt,325.00,Livre,1
+26,JCB Fastrac 8330,JCB,310.00,Livre,2
+27,Valtra N174,Valtra,260.00,Alugado,3
+28,John Deere 6155M,John Deere,275.00,Livre,1
+29,CLAAS Axion 960 Terra Trac,CLAAS,345.00,Livre,2
+30,Zetor Forterra HD,Zetor,230.00,Livre,3
