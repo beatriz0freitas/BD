@@ -30,7 +30,7 @@ DROP TRIGGER IF EXISTS setTratorLivre;
 DELIMITER $$
 
 CREATE TRIGGER setTratorLivre
-BEFORE UPDATE ON Aluguer
+AFTER UPDATE ON Aluguer
 FOR EACH ROW
 BEGIN
     -- Apenas atualiza para 'Livre' se já passou o prazo E o pagamento está concluído

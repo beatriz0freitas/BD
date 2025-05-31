@@ -32,7 +32,7 @@ END $$
 
 DELIMITER ;
 
-CALL VerificaClienteAptoAluguer(3, '2025-08-01');
+CALL VerificaClienteAptoAluguer(1, '2035-08-01');
 
 
 
