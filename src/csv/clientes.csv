@@ -1,0 +1,4 @@
+nomeCompleto,dataNascimento,NIF,numeroDocumento,dataValidadeDocumento,rua,localidade,codigoPostal,numeroTelemovel,email,dataValidadeCarta,habilitacao,dataValidadeCartao,numeroCartao,CVV
+João Ferreira,1985-05-12,123456789,34123456,2030-10-10,Rua da Liberdade,Porto,4100-123,912345678,joao.ferreira@email.com,2025-12-12,B,2026-07-01,1234567812345678,123
+Ana Costa,1990-09-20,987654321,56987654,2029-09-09,Avenida Central,Braga,4700-000,934567890,ana.costa@email.com,2026-06-15,B,2027-03-10,8765432187654321,456
+Carlos Silva,1978-03-15,456789123,78456789,2031-02-28,Rua das Flores,Lisboa,1000-200,965432187,carlos.silva@email.com,2028-09-30,C,2028-11-30,1122334455667788,789

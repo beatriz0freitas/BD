@@ -1,0 +1,53 @@
+[
+    {
+      "nomeCompleto": "João Ferreira",
+      "dataNascimento": "1985-05-12",
+      "NIF": "123456789",
+      "numeroDocumento": "23123456",
+      "dataValidadeDocumento": "2030-10-10",
+      "rua": "Rua da Liberdade",
+      "localidade": "Porto",
+      "codigoPostal": "4100-123",
+      "numeroTelemovel": "912345678",
+      "email": "joao.ferreira@email.com",
+      "dataValidadeCarta": "2025-12-12",
+      "habilitacao": "B",
+      "dataValidadeCartao": "2026-07-01",
+      "numeroCartao": "1234567812345678",
+      "CVV": "123"
+    },
+    {
+      "nomeCompleto": "Ana Costa",
+      "dataNascimento": "1990-09-20",
+      "NIF": "987654321",
+      "numeroDocumento": "12987654",
+      "dataValidadeDocumento": "2029-09-09",
+      "rua": "Avenida Central",
+      "localidade": "Braga",
+      "codigoPostal": "4700-000",
+      "numeroTelemovel": "934567890",
+      "email": "ana.costa@email.com",
+      "dataValidadeCarta": "2026-06-15",
+      "habilitacao": "T",
+      "dataValidadeCartao": "2027-03-10",
+      "numeroCartao": "8765432187654321",
+      "CVV": "456"
+    },
+    {
+      "nomeCompleto": "Carlos Silva",
+      "dataNascimento": "1978-03-15",
+      "NIF": "456789123",
+      "numeroDocumento": "87456789",
+      "dataValidadeDocumento": "2031-02-28",
+      "rua": "Rua das Flores",
+      "localidade": "Lisboa",
+      "codigoPostal": "1000-200",
+      "numeroTelemovel": "965432187",
+      "email": "carlos.silva@email.com",
+      "dataValidadeCarta": "2028-09-30",
+      "habilitacao": "T",
+      "dataValidadeCartao": "2028-11-30",
+      "numeroCartao": "1122334455667788",
+      "CVV": "789"
+    }
+  ]
