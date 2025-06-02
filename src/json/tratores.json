@@ -3,70 +3,60 @@
       "modelo": "R600",
       "marca": "John Deere",
       "precoDiario": 105.0,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     },
     {
       "modelo": "A200",
       "marca": "Massey Ferguson",
       "precoDiario": 247.29,
-      "estado": "Livre",
-      "idStand": 3
+      "estado": "Livre"
     },
     {
       "modelo": "Q500",
       "marca": "John Deere",
       "precoDiario": 218.1,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     },
     {
       "modelo": "X100",
       "marca": "Massey Ferguson",
       "precoDiario": 146.53,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     },
     {
       "modelo": "Q500",
       "marca": "Massey Ferguson",
       "precoDiario": 243.2,
-      "estado": "Livre",
-      "idStand": 3
+      "estado": "Livre"
     },
     {
       "modelo": "M400",
       "marca": "Massey Ferguson",
       "precoDiario": 189.84,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     },
     {
       "modelo": "A200",
       "marca": "Valtra",
       "precoDiario": 184.52,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     },
     {
       "modelo": "A200",
       "marca": "New Holland",
       "precoDiario": 120.44,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     },
     {
       "modelo": "Z300",
       "marca": "New Holland",
       "precoDiario": 220.75,
-      "estado": "Livre",
-      "idStand": 3
+      "estado": "Livre"
     },
     {
       "modelo": "M400",
       "marca": "Fendt",
       "precoDiario": 124.97,
-      "estado": "Livre",
-      "idStand": 1
+      "estado": "Livre"
     }
   ]
