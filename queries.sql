@@ -3,13 +3,15 @@
 -- Caso de Estudo: AgroAuto
 -- =============================================
 
--- RM02
+-- RM02 -> Lista agrupada por stand, com o identificador único e o modelo de todos os tratores alugados, 
+-- ordenados alfabeticamente pela marca do mesmo.
 SELECT * 
 FROM TratoresAlugadosPorStandDiario 
 ORDER BY idStand, marca;
 
 
--- RM04
+-- RM04 -> verificar se um cliente está apto a fazer um aluguer, verificando se a sua carta de condução é válida. 
+-- É verificada se a data de validade desta é superior à data de término do aluguer e se a habilitação é do tipo T.
 DROP PROCEDURE IF EXISTS VerificaClienteAptoAluguer;
 DELIMITER $$
 CREATE PROCEDURE VerificaClienteAptoAluguer (
@@ -27,10 +29,10 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL VerificaClienteAptoAluguer(1, '2035-08-01');
+-- CALL VerificaClienteAptoAluguer(1, '2035-08-01');
 
 
--- RM10
+-- RM10 -> funcionário com mais vendas num mês específico
 DROP PROCEDURE IF EXISTS FuncionariosComMaisAlugueresMes;
 DELIMITER $$
 CREATE PROCEDURE FuncionariosComMaisAlugueresMes (
@@ -61,10 +63,10 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL FuncionariosComMaisAlugueresMes('2025-05-01', '2025-05-31');
+-- CALL FuncionariosComMaisAlugueresMes('2025-05-01', '2025-05-31');
 
 
--- RM11
+-- RM11 -> número de alugueres na empresa no último trimestre
 DROP PROCEDURE IF EXISTS TotalAlugueresPorTrimestre;
 DELIMITER $$
 CREATE PROCEDURE TotalAlugueresPorTrimestre(
@@ -81,7 +83,7 @@ DELIMITER ;
 CALL TotalAlugueresPorTrimestre('2025-04-01', '2025-06-30');
 
 
--- RM12
+-- RM12 -> valor total faturado em cada stand no final do mês
 SELECT * 
 FROM TotalFaturadoPorStandMensal 
 WHERE ano = 2025 AND mes = 5;

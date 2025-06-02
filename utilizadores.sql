@@ -4,30 +4,19 @@
 -- =============================================
 
 -- -----------------------------------------------------
--- Administrador
--- -----------------------------------------------------
-DROP USER IF EXISTS 'admin'@'localhost';
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Admin123!';
-
--- RC02 a RC08, RC14 e RC15: Consultas
--- RC12 e RC13: Alteração de cliente e aluguer
-GRANT SELECT, UPDATE ON AgroAuto.Aluguer TO 'admin'@'localhost';
-GRANT SELECT ON AgroAuto.Trator TO 'admin'@'localhost';
-GRANT SELECT, UPDATE ON AgroAuto.Cliente TO 'admin'@'localhost';
-GRANT SELECT ON AgroAuto.Funcionario TO 'admin'@'localhost';
-GRANT SELECT ON AgroAuto.Stand TO 'admin'@'localhost';
-
--- -----------------------------------------------------
 -- Funcionario
 -- -----------------------------------------------------
 DROP ROLE IF EXISTS 'funcionario';
 CREATE ROLE 'funcionario';
 
--- RC09, RC10 e RC11: Consultas de clientes e tratores
--- RC12 e RC13: Alteração de alugueres e clientes
 GRANT SELECT, UPDATE ON AgroAuto.Cliente TO 'funcionario';
 GRANT SELECT ON AgroAuto.Trator TO 'funcionario';
 GRANT SELECT, UPDATE ON AgroAuto.Aluguer TO 'funcionario';
+
+GRANT SELECT ON AgroAuto.TratoresDisponiveis TO 'funcionario';
+GRANT SELECT ON AgroAuto.TratoresAlugadosPorStandDiario TO 'funcionario';
+
+GRANT EXECUTE ON PROCEDURE AgroAuto.HistoricoAlugueresCliente TO 'funcionario';
 
 DROP USER IF EXISTS 'dcosta'@'localhost';
 CREATE USER 'dcosta'@'localhost' IDENTIFIED BY 'senhaDiogo123!';
@@ -44,3 +33,30 @@ SET DEFAULT ROLE 'funcionario' TO 'fteixeira'@'localhost';
 
 GRANT 'funcionario' TO 'fvieira'@'localhost';
 SET DEFAULT ROLE 'funcionario' TO 'fvieira'@'localhost';
+
+-- -----------------------------------------------------
+-- Administrador
+-- -----------------------------------------------------
+DROP ROLE IF EXISTS 'administrador';
+CREATE ROLE 'administrador';
+
+DROP USER IF EXISTS 'admin'@'localhost';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Admin123!';
+
+GRANT 'funcionario' TO 'administrador';
+
+GRANT SELECT ON AgroAuto.Funcionario TO 'administrador';
+GRANT SELECT ON AgroAuto.MarcaMaisAlugada TO 'administrador';
+GRANT SELECT ON AgroAuto.TotalFaturadoPorStandMensal TO 'administrador';
+
+GRANT EXECUTE ON PROCEDURE AgroAuto.ClientesMaisAtivos TO 'administrador';
+GRANT EXECUTE ON PROCEDURE AgroAuto.TotalAlugueresPorTrimestre TO 'administrador';
+GRANT EXECUTE ON PROCEDURE AgroAuto.FuncionariosComMaisAlugueresMes TO 'administrador';
+GRANT EXECUTE ON PROCEDURE AgroAuto.LucroTotalAlugueres TO 'administrador';
+GRANT EXECUTE ON PROCEDURE AgroAuto.RegistosAlugueresFuncionario TO 'administrador';
+GRANT EXECUTE ON PROCEDURE AgroAuto.VerificaClienteAptoAluguer TO 'administrador';
+
+GRANT EXECUTE ON PROCEDURE AgroAuto.registarNovoAluguer TO 'administrador';
+
+GRANT 'administrador' TO 'admin'@'localhost';
+SET DEFAULT ROLE 'administrador' TO 'admin'@'localhost';
