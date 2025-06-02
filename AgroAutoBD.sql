@@ -1,18 +1,18 @@
 -- =============================================
--- Base de Dados: AgroAuto
+-- Universidade do Minho
+-- Disciplina de Bases de Dados
 -- Caso de Estudo: AgroAuto
+-- Maio 2025
 -- =============================================
 
-DROP SCHEMA IF EXISTS `AgroAuto` ;
-
+-- DROP SCHEMA IF EXISTS `AgroAuto` ;
 CREATE SCHEMA IF NOT EXISTS `AgroAuto`;
 USE `AgroAuto` ;
 
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Cliente`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `AgroAuto`.`Cliente` ;
-
+-- DROP TABLE IF EXISTS `AgroAuto`.`Cliente` ;
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Cliente` (
   `idCliente` INT NOT NULL AUTO_INCREMENT,
   `nomeCompleto` VARCHAR(100) NOT NULL,
@@ -35,8 +35,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Cliente` (
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Stand`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `AgroAuto`.`Stand` ;
-
+-- DROP TABLE IF EXISTS `AgroAuto`.`Stand` ;
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Stand` (
   `idStand` INT NOT NULL AUTO_INCREMENT,
   `rua` VARCHAR(100) NULL,
@@ -49,8 +48,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Stand` (
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Trator`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `AgroAuto`.`Trator` ;
-
+-- DROP TABLE IF EXISTS `AgroAuto`.`Trator` ;
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Trator` (
   `idTrator` INT NOT NULL AUTO_INCREMENT,
   `modelo` VARCHAR(75) NOT NULL,
@@ -67,8 +65,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Trator` (
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Funcionario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `AgroAuto`.`Funcionario` ;
-
+-- DROP TABLE IF EXISTS `AgroAuto`.`Funcionario` ;
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Funcionario` (
   `idFuncionario` INT NOT NULL AUTO_INCREMENT,
   `nomeCompleto` VARCHAR(75) NOT NULL,
@@ -82,8 +79,7 @@ CREATE TABLE IF NOT EXISTS `AgroAuto`.`Funcionario` (
 -- -----------------------------------------------------
 -- Table `AgroAuto`.`Aluguer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `AgroAuto`.`Aluguer` ;
-
+-- DROP TABLE IF EXISTS `AgroAuto`.`Aluguer` ;
 CREATE TABLE IF NOT EXISTS `AgroAuto`.`Aluguer` (
   `idAluguer` INT NOT NULL AUTO_INCREMENT,
   `dataInicio` DATE NOT NULL,

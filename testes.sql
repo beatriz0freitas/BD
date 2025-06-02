@@ -94,16 +94,3 @@ CALL TotalAlugueresPorTrimestre('2025-07-01', '2025-09-30'); -- Teste para o ter
 CALL TotalAlugueresPorTrimestre('2025-10-01', '2025-12-31'); -- Teste para o quarto trimestre
 
 
--- testar procedimento
-CALL registarNovoAluguer('2025-06-01', '2025-06-07', 'CartaoCredito', 'APronto', 1, 2, 3);
-SELECT * FROM Aluguer WHERE idCliente = 1 ORDER BY idAluguer DESC;
-
-CALL registarNovoAluguer(
-    '2025-06-10', '2025-06-15',  
-    'CartaoCredito', 'APronto',  
-    2, 2, 4  -- `idTrator` já ocupado - nao deve criar
-);
-SELECT * FROM Aluguer WHERE idCliente = 2 ORDER BY idAluguer DESC;
-
-CALL registarNovoAluguer('2025-06-16', '2025-06-22', 'Dinheiro', 'EmPrestacoes', 3, 5, 1 );
-SELECT * FROM Aluguer WHERE idCliente = 3 ORDER BY idAluguer DESC;

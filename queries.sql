@@ -12,7 +12,7 @@ ORDER BY idStand, marca;
 
 -- RM04 -> verificar se um cliente está apto a fazer um aluguer, verificando se a sua carta de condução é válida. 
 -- É verificada se a data de validade desta é superior à data de término do aluguer e se a habilitação é do tipo T.
-DROP PROCEDURE IF EXISTS VerificaClienteAptoAluguer;
+-- DROP PROCEDURE IF EXISTS VerificaClienteAptoAluguer;
 DELIMITER $$
 CREATE PROCEDURE VerificaClienteAptoAluguer (
     IN pidClientePretendido INT,
@@ -32,8 +32,8 @@ DELIMITER ;
 -- CALL VerificaClienteAptoAluguer(1, '2035-08-01');
 
 
--- RM10 -> funcionário com mais vendas num mês específico
-DROP PROCEDURE IF EXISTS FuncionariosComMaisAlugueresMes;
+-- RM10 -> funcionário com mais alugueres num mês específico
+-- DROP PROCEDURE IF EXISTS FuncionariosComMaisAlugueresMes;
 DELIMITER $$
 CREATE PROCEDURE FuncionariosComMaisAlugueresMes (
     IN pDataInicioMes DATE,
@@ -67,7 +67,7 @@ DELIMITER ;
 
 
 -- RM11 -> número de alugueres na empresa no último trimestre
-DROP PROCEDURE IF EXISTS TotalAlugueresPorTrimestre;
+-- DROP PROCEDURE IF EXISTS TotalAlugueresPorTrimestre;
 DELIMITER $$
 CREATE PROCEDURE TotalAlugueresPorTrimestre(
     IN pdataInicioTrimestre DATE,
@@ -80,7 +80,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL TotalAlugueresPorTrimestre('2025-04-01', '2025-06-30');
+-- CALL TotalAlugueresPorTrimestre('2025-04-01', '2025-06-30');
 
 
 -- RM12 -> valor total faturado em cada stand no final do mês

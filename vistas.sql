@@ -27,7 +27,7 @@ HAVING totalAlugueres = (		-- para EMPATES
     ) AS subquery
 );
 
-SELECT * FROM MarcaMaisAlugada;
+-- SELECT * FROM MarcaMaisAlugada;
 
 -- RC11 -> lista de tratores disponíveis para alugar
 DROP VIEW IF EXISTS TratoresDisponiveis;
@@ -48,7 +48,7 @@ WHERE estado = 'Livre';
 
 -- RM02 -> lista agrupada por stand, com o identificador único e o modelo de todos os tratores alugados,
 -- ordenados alfabeticamente pela marca do mesmo
-DROP VIEW IF EXISTS TratoresAlugadosPorStandDiario;
+-- DROP VIEW IF EXISTS TratoresAlugadosPorStandDiario;
 CREATE VIEW TratoresAlugadosPorStandDiario AS
 SELECT DISTINCT
 	CURRENT_DATE AS dataConsulta,
@@ -64,7 +64,7 @@ WHERE
 
 
 -- RM12 -> valor total faturado em cada stand no final do mês
-DROP VIEW IF EXISTS TotalFaturadoPorStandMensal;
+-- DROP VIEW IF EXISTS TotalFaturadoPorStandMensal;
 CREATE VIEW TotalFaturadoPorStandMensal AS
 SELECT
     t.idStand,
