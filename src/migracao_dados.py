@@ -335,7 +335,7 @@ def migrar_funcionarios_json(ficheiro, id_stand):
         print(f"Funcionários JSON migrados com sucesso para stand {id_stand}.")
 
 
-# ---- MAPEAMENTO STANDS E MIGRAÇÕES ---- #
+# ---- ASSOCIAÇÃO STAND FONTE DE DADOS ---- #
 stands_migracao = {
     1: "bd",
     2: "csv",
