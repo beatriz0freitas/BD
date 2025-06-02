@@ -48,7 +48,7 @@ def migrar_de_postgres_clientes(id_stand):
         "numeroCartao", 
         "CVV" 
     FROM "Cliente"
-""")
+    """)
 
 
     mysql_conn = conectar_mysql()
@@ -127,10 +127,18 @@ def migrar_de_postgres_alugueres(id_stand):
     pg_cursor = pg_conn.cursor()
     pg_cursor.execute('SET search_path TO "AgroAuto";')
     pg_cursor.execute("""
-SELECT "dataInicio", "dataTermino", "precoTotal", "metodoPagamento",
-       "estadoPagamento", "tipoPagamento", "idCliente", "idTrator", "idFuncionario"
-FROM "Aluguer"
-""")
+    SELECT 
+        "dataInicio",
+        "dataTermino", 
+        "precoTotal", 
+        "metodoPagamento",
+       "estadoPagamento", 
+        "tipoPagamento", 
+        "idCliente", 
+        "idTrator", 
+        "idFuncionario"
+    FROM "Aluguer"
+    """)
 
 
 
@@ -150,7 +158,8 @@ FROM "Aluguer"
     print(f"Alugueres migrados de PostgreSQL para stand {id_stand}.")
 
 
-# ---- MIGRAÇÃO CLIENTES ---- #
+# ---- MIGRAÇÃO CSV ---- #
+
 def migrar_clientes_csv(ficheiro, id_stand):
     with open(ficheiro, newline='', encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -171,31 +180,7 @@ def migrar_clientes_csv(ficheiro, id_stand):
         conn.close()
         print(f"Clientes CSV migrados com sucesso para stand {id_stand}.")
 
-def migrar_clientes_json(ficheiro, id_stand):
-    with open(ficheiro, encoding="utf-8") as f:
-        clientes = json.load(f)
-        conn = conectar_mysql()
-        cursor = conn.cursor()
-        for c in clientes:
-            cursor.execute("""
-                INSERT INTO Cliente (
-                    nomeCompleto, dataNascimento, NIF, numeroDocumento,
-                    dataValidadeDocumento, rua, localidade, CodigoPostal,
-                    numeroTelemovel, email, dataValidadeCarta, habilitacao,
-                    dataValidadeCartao, numeroCartao, CVV
-                )
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """, (
-                c["nomeCompleto"], c["dataNascimento"], c["NIF"], c["numeroDocumento"],
-                c["dataValidadeDocumento"], c["rua"], c["localidade"], c["codigoPostal"],
-                c["numeroTelemovel"], c["email"], c["dataValidadeCarta"], c["habilitacao"],
-                c["dataValidadeCartao"], c["numeroCartao"], c["CVV"]
-            ))
-        conn.commit()
-        conn.close()
-        print(f"Clientes JSON migrados com sucesso para stand {id_stand}.")
 
-# ---- MIGRAÇÃO TRATORES ---- #
 def migrar_tratores_csv(ficheiro, id_stand):
     with open(ficheiro, newline='', encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -210,21 +195,7 @@ def migrar_tratores_csv(ficheiro, id_stand):
         conn.close()
         print(f"Tratores CSV migrados com sucesso para stand {id_stand}.")
 
-def migrar_tratores_json(ficheiro, id_stand):
-    with open(ficheiro, encoding="utf-8") as f:
-        tratores = json.load(f)
-        conn = conectar_mysql()
-        cursor = conn.cursor()
-        for t in tratores:
-            cursor.execute("""
-                INSERT INTO Trator (modelo, marca, precoDiario, estado, idStand)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (t["modelo"], t["marca"], float(t["precoDiario"]), t["estado"], id_stand))
-        conn.commit()
-        conn.close()
-        print(f"Tratores JSON migrados com sucesso para stand {id_stand}.")
 
-# ---- MIGRAÇÃO ALUGUERES ---- #
 def migrar_alugueres_csv(ficheiro, id_stand):
     with open(ficheiro, newline='', encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -243,27 +214,6 @@ def migrar_alugueres_csv(ficheiro, id_stand):
         conn.commit()
         conn.close()
         print(f"Alugueres CSV migrados com sucesso para stand {id_stand}.")
-
-def migrar_alugueres_json(ficheiro, id_stand):
-    with open(ficheiro, encoding="utf-8") as f:
-        alugueres = json.load(f)
-        conn = conectar_mysql()
-        cursor = conn.cursor()
-        for a in alugueres:
-            cursor.execute("""
-                INSERT INTO Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento,
-                                     estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """, (
-                a["dataInicio"], a["dataTermino"], float(a["precoTotal"]), a["metodoPagamento"],
-                a["estadoPagamento"], a["tipoPagamento"], int(a["idCliente"]),
-                int(a["idTrator"]), int(a["idFuncionario"])
-            ))
-        conn.commit()
-        conn.close()
-        print(f"Alugueres JSON migrados com sucesso para stand {id_stand}.")
-
-# ---- MIGRAÇÃO FUNCIONÁRIOS ---- #
 
 def migrar_funcionarios_csv(ficheiro, id_stand):
     import csv
@@ -290,6 +240,72 @@ def migrar_funcionarios_csv(ficheiro, id_stand):
         conn.commit()
         conn.close()
         print(f"Funcionários CSV migrados com sucesso para stand {id_stand}.")
+
+
+
+
+# ---- MIGRAÇÃO JSON ---- #
+
+def migrar_tratores_json(ficheiro, id_stand):
+    with open(ficheiro, encoding="utf-8") as f:
+        tratores = json.load(f)
+        conn = conectar_mysql()
+        cursor = conn.cursor()
+        for t in tratores:
+            cursor.execute("""
+                INSERT INTO Trator (modelo, marca, precoDiario, estado, idStand)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (t["modelo"], t["marca"], float(t["precoDiario"]), t["estado"], id_stand))
+        conn.commit()
+        conn.close()
+        print(f"Tratores JSON migrados com sucesso para stand {id_stand}.")
+
+
+def migrar_clientes_json(ficheiro, id_stand):
+    with open(ficheiro, encoding="utf-8") as f:
+        clientes = json.load(f)
+        conn = conectar_mysql()
+        cursor = conn.cursor()
+        for c in clientes:
+            cursor.execute("""
+                INSERT INTO Cliente (
+                    nomeCompleto, dataNascimento, NIF, numeroDocumento,
+                    dataValidadeDocumento, rua, localidade, CodigoPostal,
+                    numeroTelemovel, email, dataValidadeCarta, habilitacao,
+                    dataValidadeCartao, numeroCartao, CVV
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                c["nomeCompleto"], c["dataNascimento"], c["NIF"], c["numeroDocumento"],
+                c["dataValidadeDocumento"], c["rua"], c["localidade"], c["codigoPostal"],
+                c["numeroTelemovel"], c["email"], c["dataValidadeCarta"], c["habilitacao"],
+                c["dataValidadeCartao"], c["numeroCartao"], c["CVV"]
+            ))
+        conn.commit()
+        conn.close()
+        print(f"Clientes JSON migrados com sucesso para stand {id_stand}.")
+
+
+
+def migrar_alugueres_json(ficheiro, id_stand):
+    with open(ficheiro, encoding="utf-8") as f:
+        alugueres = json.load(f)
+        conn = conectar_mysql()
+        cursor = conn.cursor()
+        for a in alugueres:
+            cursor.execute("""
+                INSERT INTO Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento,
+                                     estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                a["dataInicio"], a["dataTermino"], float(a["precoTotal"]), a["metodoPagamento"],
+                a["estadoPagamento"], a["tipoPagamento"], int(a["idCliente"]),
+                int(a["idTrator"]), int(a["idFuncionario"])
+            ))
+        conn.commit()
+        conn.close()
+        print(f"Alugueres JSON migrados com sucesso para stand {id_stand}.")
+
 
 
 def migrar_funcionarios_json(ficheiro, id_stand):
