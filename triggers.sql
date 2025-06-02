@@ -4,7 +4,7 @@
 -- =============================================
 
 -- Atualizar trator como "Alugado" no início do aluguer
-DROP TRIGGER IF EXISTS setTratorAlugado;
+-- DROP TRIGGER IF EXISTS setTratorAlugado;
 DELIMITER $$
 
 CREATE TRIGGER setTratorAlugado
@@ -22,7 +22,7 @@ DELIMITER ;
 
 
 -- Atualizar trator como "Livre" quando o aluguer termina
-DROP TRIGGER IF EXISTS setTratorLivre;
+-- DROP TRIGGER IF EXISTS setTratorLivre;
 DELIMITER $$
 
 CREATE TRIGGER setTratorLivre

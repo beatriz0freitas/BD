@@ -3,12 +3,11 @@
 -- Caso de Estudo: AgroAuto
 -- =============================================
 
-DROP FUNCTION IF EXISTS calcularCustoAluguer;
+-- DROP FUNCTION IF EXISTS calcularCustoAluguer;
 DELIMITER $$
 
 CREATE FUNCTION calcularCustoAluguer(pIdAluguer INT) RETURNS DECIMAL(8,2)
 DETERMINISTIC
-
 BEGIN
     DECLARE precoTotal DECIMAL(8,2);
 
@@ -22,3 +21,5 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- SELECT calcularCustoAluguer(2);

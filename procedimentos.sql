@@ -8,7 +8,7 @@
 -- =============================================
 
 -- RC03 -> Clientes que mais tratores alugaram depois de certa data
-DROP PROCEDURE IF EXISTS ClientesMaisAtivos;
+-- DROP PROCEDURE IF EXISTS ClientesMaisAtivos;
 DELIMITER $$
 
 CREATE PROCEDURE ClientesMaisAtivos (
@@ -32,8 +32,9 @@ DELIMITER ;
 
 
 -- RC05 -> alugueres realizados entre determinadas datas por parte de qualquer funcionário
-DROP PROCEDURE IF EXISTS RegistosAlugueresFuncionario;
+-- DROP PROCEDURE IF EXISTS RegistosAlugueresFuncionario;
 DELIMITER $$
+
 CREATE PROCEDURE RegistosAlugueresFuncionario (
     IN pDataInicio DATE,
     IN pDataFim DATE
@@ -50,8 +51,9 @@ DELIMITER ;
 -- CALL RegistosAlugueresFuncionario('2025-05-20', '2025-05-24');
 
 -- RC08 -> lucro total dos alugueres efetuados num dado período de tempo
-DROP PROCEDURE IF EXISTS LucroTotalAlugueres;
+-- DROP PROCEDURE IF EXISTS LucroTotalAlugueres;
 DELIMITER $$
+
 CREATE PROCEDURE LucroTotalAlugueres (
     IN pDataInicio DATE,
     IN pDataFim DATE
@@ -69,7 +71,7 @@ DELIMITER ;
 
 
 -- RC14 -> consultar o histórico de alugueres de qualquer cliente
-DROP PROCEDURE IF EXISTS HistoricoAlugueresCliente;
+-- DROP PROCEDURE IF EXISTS HistoricoAlugueresCliente;
 DELIMITER $$
 
 CREATE PROCEDURE HistoricoAlugueresCliente(IN pidCliente INT)
@@ -99,7 +101,7 @@ CALL HistoricoAlugueresCliente(6);
 -- =============================================
 -- procedimento COM TRANSACAO
 -- =============================================
-DROP PROCEDURE IF EXISTS registarNovoAluguer;
+-- DROP PROCEDURE IF EXISTS registarNovoAluguer;
 DELIMITER $$
 
 CREATE PROCEDURE registarNovoAluguer (
@@ -123,7 +125,6 @@ BEGIN
     -- Verifica disponibilidade do trator
     IF NOT EXISTS (SELECT 1 FROM Trator WHERE idTrator = pidTrator AND estado = 'Livre') THEN
         ROLLBACK;
-		-- SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Trator não está disponível para aluguer.';
     END IF;
 
     -- Inserir aluguer sem calcular preço

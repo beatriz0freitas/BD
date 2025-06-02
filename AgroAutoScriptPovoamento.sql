@@ -57,9 +57,9 @@ VALUES
 INSERT INTO `AgroAuto`.`Aluguer`
 	(dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
 VALUES
-('2025-05-20', '2025-05-25', 1000.00, 'CartaoCredito', 'Concluido', 'APronto',      1, 1, 1),
-('2025-05-20', '2025-05-22', 600.00, 'Dinheiro',       'Concluido', 'APronto',      2, 2, 2),
-('2025-05-25', '2025-06-18', 840.00, 'CartaoCredito',  'Concluido', 'EmPrestacoes', 3, 3, 3),
-('2025-05-20', '2025-06-23', 780.00, 'Dinheiro',       'Concluido', 'APronto',      5, 2, 2),
-('2025-05-25', '2025-05-27', 900.00, 'CartaoCredito',  'EmAtraso',  'EmPrestacoes', 4, 6, 3),
-('2025-05-28', '2025-06-11', 1250.00, 'Dinheiro',      'Concluido', 'APronto',      6, 5, 2);
+('2025-05-20', '2025-05-25', 1500.00, 'CartaoCredito', 'Concluido', 'APronto',      1, 1, 1),
+('2025-05-20', '2025-05-22', 900.00, 'Dinheiro',       'Concluido', 'APronto',      2, 2, 2),
+('2025-05-25', '2025-06-18', 7000.00, 'CartaoCredito',  'Concluido', 'EmPrestacoes', 3, 3, 3),
+('2025-05-20', '2025-06-23', 10500.00, 'Dinheiro',       'Concluido', 'APronto',      5, 2, 2),
+('2025-05-25', '2025-05-27', 930.00, 'CartaoCredito',  'EmAtraso',  'EmPrestacoes', 4, 6, 3),
+('2025-05-28', '2025-06-11', 4050.00, 'Dinheiro',      'Concluido', 'APronto',      6, 5, 2);

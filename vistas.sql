@@ -8,7 +8,7 @@
 -- =============================================
 
 -- RC04 -> marca de tratores mais alugada no final de cada ano.
-DROP VIEW IF EXISTS MarcaMaisAlugada;
+-- DROP VIEW IF EXISTS MarcaMaisAlugada;
 CREATE VIEW MarcaMaisAlugada AS
 SELECT 
     Trator.marca, 
@@ -30,7 +30,7 @@ HAVING totalAlugueres = (		-- para EMPATES
 -- SELECT * FROM MarcaMaisAlugada;
 
 -- RC11 -> lista de tratores disponíveis para alugar
-DROP VIEW IF EXISTS TratoresDisponiveis;
+-- DROP VIEW IF EXISTS TratoresDisponiveis;
 CREATE VIEW TratoresDisponiveis AS
 SELECT 
 	idTrator, 
