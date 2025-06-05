@@ -2,6 +2,7 @@
 -- Povoamento inicial da base de dados
 -- Caso de Estudo: AgroAuto
 -- =============================================
+
 USE `AgroAuto`;
 
 -- Povoamento da tabela "Cliente"

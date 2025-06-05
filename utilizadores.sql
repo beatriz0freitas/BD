@@ -6,7 +6,7 @@
 -- -----------------------------------------------------
 -- Funcionario
 -- -----------------------------------------------------
--- DROP ROLE IF EXISTS 'funcionario';
+DROP ROLE IF EXISTS 'funcionario';
 CREATE ROLE 'funcionario';
 
 GRANT SELECT, UPDATE ON AgroAuto.Cliente TO 'funcionario';

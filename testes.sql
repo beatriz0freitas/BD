@@ -64,6 +64,9 @@ UPDATE Aluguer
 SET estadoPagamento = 'Concluido', dataTermino = DATE_SUB(CURDATE(), INTERVAL 1 DAY)
 WHERE idTrator = 1;
 
+ALTER TABLE Cliente 
+ADD dataMorte DATE;
+
 
 -- mais entradas para query trimestre
 INSERT INTO AgroAuto.Aluguer (dataInicio, dataTermino, precoTotal, metodoPagamento, estadoPagamento, tipoPagamento, idCliente, idTrator, idFuncionario)
@@ -92,5 +95,6 @@ VALUES
 
 CALL TotalAlugueresPorTrimestre('2025-07-01', '2025-09-30'); -- Teste para o terceiro trimestre
 CALL TotalAlugueresPorTrimestre('2025-10-01', '2025-12-31'); -- Teste para o quarto trimestre
+
 
 

@@ -63,7 +63,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- CALL FuncionariosComMaisAlugueresMes('2025-05-01', '2025-05-31');
+CALL FuncionariosComMaisAlugueresMes('2025-05-01', '2025-05-31');
 
 
 -- RM11 -> número de alugueres na empresa no último trimestre

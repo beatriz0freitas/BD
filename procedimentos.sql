@@ -8,7 +8,7 @@
 -- =============================================
 
 -- RC03 -> Clientes que mais tratores alugaram depois de certa data
--- DROP PROCEDURE IF EXISTS ClientesMaisAtivos;
+DROP PROCEDURE IF EXISTS ClientesMaisAtivos;
 DELIMITER $$
 
 CREATE PROCEDURE ClientesMaisAtivos (
@@ -97,6 +97,8 @@ VALUES
 
 CALL HistoricoAlugueresCliente(6);
 */
+
+
 
 -- =============================================
 -- procedimento COM TRANSACAO

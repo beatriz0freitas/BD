@@ -48,7 +48,7 @@ WHERE estado = 'Livre';
 
 -- RM02 -> lista agrupada por stand, com o identificador único e o modelo de todos os tratores alugados,
 -- ordenados alfabeticamente pela marca do mesmo
--- DROP VIEW IF EXISTS TratoresAlugadosPorStandDiario;
+DROP VIEW IF EXISTS TratoresAlugadosPorStandDiario;
 CREATE VIEW TratoresAlugadosPorStandDiario AS
 SELECT DISTINCT
 	CURRENT_DATE AS dataConsulta,

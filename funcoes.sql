@@ -10,7 +10,7 @@ CREATE FUNCTION calcularCustoAluguer(pIdAluguer INT) RETURNS DECIMAL(8,2)
 DETERMINISTIC
 BEGIN
     DECLARE precoTotal DECIMAL(8,2);
-
+    
     SELECT (DATEDIFF(dataTermino, dataInicio) + 1) * precoDiario
     INTO precoTotal
     FROM Aluguer 
