@@ -46,25 +46,25 @@ SELECT COUNT(*) FROM Aluguer;
 
 #### Views (Vistas SQL)
 
-`MarcaMaisAlugada` | Marca de tratores mais alugada no final de cada ano 
-`TratoresDisponiveis` | Lista de tratores disponíveis para alugar em tempo real
-`TotalFaturadoPorStandMensal` | Valor total faturado por stand em cada mês 
+- `MarcaMaisAlugada` | Marca de tratores mais alugada no final de cada ano 
+- `TratoresDisponiveis` | Lista de tratores disponíveis para alugar em tempo real
+- `TotalFaturadoPorStandMensal` | Valor total faturado por stand em cada mês 
 
 #### Stored Procedures
 
-`ClientesMaisAtivos` | Clientes que mais tratores alugaram após uma data
-`RegistosAlugueresFuncionario` | Número de alugueres por funcionário num intervalo de datas
-`LucroTotalAlugueres` | Lucro total gerado pelos alugueres num período
-`HistoricoAlugueresCliente` | Histórico completo de alugueres de um cliente
-`registarNovoAluguer` | Registo seguro de um novo aluguer com validações e transações
-`VerificaClienteAptoAluguer` | Verifica se um cliente está apto a alugar até uma data
-`FuncionariosComMaisAlugueresMes` | Funcionário com mais alugueres num dado mês
-`TotalAlugueresPorTrimestre` | Total de alugueres realizados num trimestre
+- `ClientesMaisAtivos` | Clientes que mais tratores alugaram após uma data
+- `RegistosAlugueresFuncionario` | Número de alugueres por funcionário num intervalo de datas
+- `LucroTotalAlugueres` | Lucro total gerado pelos alugueres num período
+- `HistoricoAlugueresCliente` | Histórico completo de alugueres de um cliente
+- `registarNovoAluguer` | Registo seguro de um novo aluguer com validações e transações
+- `VerificaClienteAptoAluguer` | Verifica se um cliente está apto a alugar até uma data
+- `FuncionariosComMaisAlugueresMes` | Funcionário com mais alugueres num dado mês
+- `TotalAlugueresPorTrimestre` | Total de alugueres realizados num trimestre
 
 #### Triggers
 
-`setTratorAlugado` | INSERT em Aluguer | Atualiza automaticamente o estado do trator para "Alugado"
-`setTratorLivre` | Fim de Aluguer | Restaura automaticamente o estado do trator para "Livre" 
+- `setTratorAlugado` | INSERT em Aluguer | Atualiza automaticamente o estado do trator para "Alugado"
+- `setTratorLivre` | Fim de Aluguer | Restaura automaticamente o estado do trator para "Livre" 
 
 #### Função Armazenada
 
@@ -76,16 +76,6 @@ O sistema implementa um modelo de segurança baseado em **privilégios mínimos*
 
 - **Administrador** — acesso total à gestão da base de dados, relatórios e dados sensíveis
 - **Funcionário** — acesso limitado à consulta de clientes, tratores e registos de alugueres
-
-#### Migração de Dados
-
-O processo de migração consolidou dados de 3 fontes distintas na base de dados MySQL central, utilizando Python:
-
-```
-Stand Olivença (PostgreSQL) ──▶ ┐
-Stand Lamego   (CSV)        ──▶ ├──▶ Script Python ──▶ MySQL Central
-Stand (JSON)                ──▶ ┘
-```
 
 ---
 **Universidade do Minho · Escola de Engenharia · Unidade Curricular de Bases de Dados · Ano Letivo 2024/2025**
